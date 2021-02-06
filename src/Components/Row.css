@@ -2,6 +2,13 @@
   color: white;
   margin-left: 20px;
 }
+.row > h2 {
+  font-size: 1.2rem;
+  padding: 1rem;
+  font-weight: 500;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgb(226, 225, 225);
+}
 .row__posters {
   display: flex;
   overflow-y: hidden;
@@ -12,20 +19,23 @@
   display: none;
 }
 .row__poster {
-  max-height: 100px;
+  max-height: 6rem;
+  border-radius: 10px;
   object-fit: contain;
   margin-right: 10px;
   width: 100%;
+  box-shadow: 0px 0px 5px 5px rgba(1, 37, 22, 0.7);
   transition: transform 450ms;
 }
 .row__poster:hover {
   transform: scale(1.08);
-  opacity: 1;
+  opacity: 0.8;
 }
 .row__posterLarge {
-  max-height: 250px;
+  max-height: 12rem;
+  transition: transform 500ms;
 }
 .row__posterLarge:hover {
   transform: scale(1.09);
-  opacity: 1;
+  opacity: 0.8;
 }
