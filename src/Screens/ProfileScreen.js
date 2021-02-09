@@ -1,12 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Nav from "../Components/Nav";
-import { selectUser } from "../features/userSlice";
-import { auth } from "../firebase";
+import { logout, selectUser } from "../features/userSlice";
 import PlanScreen from "./PlanScreen";
 import "./ProfileScreen.css";
 function ProfileScreen() {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
   return (
     <div className="profileScreen">
       <Nav />
@@ -18,12 +18,12 @@ function ProfileScreen() {
             alt=""
           />
           <div className="profileScreen__details">
-            <h2>{user.email} </h2>
+            <h2>{user?.email} </h2>
             <div className="profileScreen__plans">
               <h2 style={{ color: "gold" }}>Plans</h2>
               <PlanScreen />
               <button
-                onClick={() => auth.signOut()}
+                onClick={() => dispatch(logout())}
                 className="profileScreen__signOut"
               >
                 Sign Out

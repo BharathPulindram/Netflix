@@ -3,15 +3,13 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomeScreen from "./Components/HomeScreen";
 import LoginScreen from "./Screens/LoginScreen";
-import { auth } from "./firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selectUser } from "./features/userSlice";
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
 import ProfileScreen from "./Screens/ProfileScreen";
 import Stripe from "./Screens/Stripe";
 function App() {
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  useEffect(() => {
+  /* useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
         dispatch(
@@ -25,7 +23,8 @@ function App() {
       }
     });
     return unsubscribe;
-  }, [dispatch]);
+  }, [dispatch]); */
+  console.log("user is", user);
   return (
     <div className="app">
       <Router>
@@ -33,13 +32,13 @@ function App() {
           <LoginScreen />
         ) : (
           <Switch>
-            <Route path="/profile">
+            <Route exact path="/profile">
               <ProfileScreen />
             </Route>
-            <Route path="/stripe">
+            <Route exact path="/stripe">
               <Stripe />
             </Route>
-            <Route exact path="/">
+            <Route exact path="/homescreen">
               <HomeScreen />
             </Route>
           </Switch>
